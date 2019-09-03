@@ -1,4 +1,4 @@
-package reactnative.mobx.boilerplate;
+package com.treasure;
 
 import android.app.Application;
 

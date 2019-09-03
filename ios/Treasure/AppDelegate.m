@@ -1,7 +1,7 @@
 /**
  * Copyright (c) Facebook, Inc. and its affiliates.
  *
- * This source code is lreactnativemobxnsed under the MIT lreactnativemobxnse found in the
+ * This source code is lTreasurensed under the MIT lTreasurense found in the
  * LICENSE file in the root directory of this source tree.
  */
 
@@ -19,7 +19,7 @@
   jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
 
   RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
-                                                      moduleName:@"reactnativemobx"
+                                                      moduleName:@"Treasure"
                                                initialProperties:nil
                                                    launchOptions:launchOptions];
   rootView.backgroundColor = [UIColor blackColor];

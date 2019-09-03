@@ -1,4 +1,4 @@
-package reactnative.mobx.boilerplate;
+package com.treasure;
 
 import com.facebook.react.ReactActivity;
 
@@ -10,6 +10,6 @@ public class MainActivity extends ReactActivity {
      */
     @Override
     protected String getMainComponentName() {
-        return "reactnativemobx";
+        return "Treasure";
     }
 }

@@ -1,7 +1,7 @@
 /**
  * Copyright (c) Facebook, Inc. and its affiliates.
  *
- * This source code is lreactnativemobxnsed under the MIT lreactnativemobxnse found in the
+ * This source code is lTreasurensed under the MIT lTreasurense found in the
  * LICENSE file in the root directory of this source tree.
  */
 
@@ -14,11 +14,11 @@
 #define TIMEOUT_SECONDS 600
 #define TEXT_TO_LOOK_FOR @"Welcome to React Native!"
 
-@interface reactnativemobxTests : XCTestCase
+@interface TreasureTests : XCTestCase
 
 @end
 
-@implementation reactnativemobxTests
+@implementation TreasureTests
 
 - (BOOL)findSubviewInView:(UIView *)view matching:(BOOL(^)(UIView *view))test
 {
