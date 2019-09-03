@@ -1,5 +1,5 @@
 import { action, observable, runInAction } from "mobx";
-import axios from "axios";
+import UserService from "../services/UserService";
 
 /**
  * Counter store
@@ -27,37 +27,18 @@ export class CounterStore {
     this.count = this.count - 1;
   }
 
-  @action
-  getDataSuccess = response => {
-    debugger;
-  };
-
   @observable githubProjects = [];
   @observable state = "pending"; // "pending" / "done" / "error"
 
   @action
-  fetchProjects() {
-    API = axios.create({
-      baseURL: "http://dummy.restapiexample.com/api/v1",
-      responseType: "json"
-    });
-    this.githubProjects = [];
-    this.state = "pending";
-    API.get("/employees").then(this.getDataSuccess);
-  }
-
-  @action
   fetchStuff() {
-    API = axios.create({
-      baseURL: "http://dummy.restapiexample.com/api/v1",
-      responseType: "json"
-    });
     this.githubProjects = [];
     this.state = "pending";
-    API.get("/employees").then(results => {
+    UserService.getStuff().then(results => {
       // put the 'final' modification in an anonymous action
       runInAction(() => {
-        this.count = results.data.length;
+        this.state = "done";
+        this.count = this.count + results.data.length;
       });
     });
   }

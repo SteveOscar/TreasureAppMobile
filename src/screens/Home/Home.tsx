@@ -47,7 +47,6 @@ export class Home extends React.Component<HomeProps> {
   /** Handles increment button */
   handleIncrement = () => {
     // this.props.counterStore.increment();
-    // this.props.counterStore.fetchProjects();
     this.props.counterStore.fetchStuff();
   };
 
