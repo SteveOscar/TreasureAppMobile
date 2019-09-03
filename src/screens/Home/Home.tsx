@@ -1,4 +1,5 @@
 import { inject, observer } from "mobx-react";
+import { when } from "mobx";
 import * as React from "react";
 import { Platform, StyleSheet, View } from "react-native";
 import { Button, Header, Text } from "react-native-elements";
@@ -6,6 +7,7 @@ import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
 import { I18NManager } from "../../i18n/i18n";
 import { CounterStore } from "../../stores/counter";
+import { UserStore } from "../../stores/user";
 
 // tslint:disable:no-magic-numbers
 const styles = StyleSheet.create({
@@ -37,11 +39,23 @@ const styles = StyleSheet.create({
 
 /** Home screen */
 @inject("counterStore")
+@inject("userStore")
 @observer
 export class Home extends React.Component<HomeProps> {
   /** Set initial count */
   componentDidMount(): void {
     this.props.counterStore.setCount(1);
+    when(
+      () => this.props.userStore.currentUser,
+      () => {
+        console.log("Nav Away!");
+      }
+    );
+  }
+
+  componentDidUpdate(nextProps) {
+    console.log("updated!");
+    console.log(nextProps);
   }
 
   /** Handles increment button */
@@ -53,6 +67,10 @@ export class Home extends React.Component<HomeProps> {
   /** Handles decrement button */
   handleDecrement = () => {
     this.props.counterStore.decrement();
+  };
+
+  handleLoginUser = (email, password) => {
+    this.props.userStore.loginUser(email, password);
   };
 
   /** Renders home component */
@@ -89,6 +107,20 @@ export class Home extends React.Component<HomeProps> {
             onPress={this.handleDecrement}
           />
         </View>
+        <View style={styles.counterView}>
+          <Button
+            testID="loginBtn"
+            containerStyle={styles.button}
+            raised={true}
+            title="Login"
+            onPress={() => this.handleLoginUser("steve@gmail.com", "aabtpwd")}
+          />
+          <Text testID="countText" style={styles.counterText}>
+            {this.props.userStore.currentUser
+              ? this.props.userStore.currentUser.email
+              : "NA"}
+          </Text>
+        </View>
       </View>
     );
   }
@@ -97,6 +129,7 @@ export class Home extends React.Component<HomeProps> {
 interface StoreProps {
   /** instance of counter store */
   counterStore: CounterStore;
+  userStore: UserStore;
 }
 
 interface HomeProps extends StoreProps {
