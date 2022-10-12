@@ -16,7 +16,7 @@
     "mobx": "^5.9.0",
     "mobx-react": "^5.4.3",
     "react": "16.6.3",
-    "react-native": "0.58.6",
+    "react-native": "0.70.2",
     "react-native-elements": "^1.1.0",
     "react-native-gesture-handler": "^1.0.17",
     "react-native-localization": "^2.1.0",
